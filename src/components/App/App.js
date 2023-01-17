@@ -34,9 +34,9 @@ export class App extends Component {
   deleteContact = contactId => {
     return this.setState(prevState => {
       return {
-        contacts: prevState.contacts.filter(
-          contact => contactId !== contact.id
-        ),
+        contacts: prevState.contacts.filter(contact => {
+          return contactId !== contact.id;
+        }),
       };
     });
   };

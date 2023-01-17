@@ -1,7 +1,9 @@
+import PropTypes from 'prop-types';
 import { Contact } from 'components/Contact/Contact';
+import { List } from './ContactList.styled';
 export const ContactList = ({ items, onDelete }) => {
   return (
-    <ul>
+    <List>
       {items.map(item => {
         console.log(item.name);
         return (
@@ -10,6 +12,10 @@ export const ContactList = ({ items, onDelete }) => {
           </li>
         );
       })}
-    </ul>
+    </List>
   );
+};
+ContactList.propTypes = {
+  items: PropTypes.array.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };

@@ -1,6 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { nanoid } from 'nanoid';
 import * as yup from 'yup';
+import { FormButton, FormLabel, Input } from './Form.styled';
+import PropTypes from 'prop-types';
 let schema = yup.object().shape({
   name: yup.string().required(),
   number: yup.string().min(7).max(12).required(),
@@ -23,9 +25,9 @@ export const ContactForm = ({ onSubmit }) => {
       validationSchema={schema}
     >
       <Form autoComplete="off">
-        <label htmlFor="name">
+        <FormLabel htmlFor="name">
           Name
-          <Field
+          <Input
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -33,21 +35,24 @@ export const ContactForm = ({ onSubmit }) => {
             required
           />
           <ErrorMessage name="name" component="div" />
-        </label>
-        <label htmlFor="number">
+        </FormLabel>
+        <FormLabel htmlFor="number">
           Phone
-          <Field
+          <Input
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
-          ></Field>
+          ></Input>
           <ErrorMessage name="number" component="div" />
-        </label>
+        </FormLabel>
 
-        <button type="submit">Add contact</button>
+        <FormButton type="submit">Add contact</FormButton>
       </Form>
     </Formik>
   );
+};
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };

@@ -6,6 +6,7 @@ export const Input = styled(Field)`
   border-radius: 10px;
   border: 2px solid ${props => props.theme.colors.mainBorderColor};
   outline: none;
+  margin-left: ${props => props.theme.spacing.large};
 `;
 export const FormLabel = styled.label`
   color: ${props => props.theme.colors.greyText};

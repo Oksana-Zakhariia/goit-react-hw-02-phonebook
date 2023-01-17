@@ -4,6 +4,9 @@ export const InputLabel = styled.label`
   font-size: ${props => props.theme.fonts.largeFontSize};
   margin-right: auto;
   margin-left: auto;
+  display: flex;
+  gap: ${props => props.theme.spacing.small};
+  align-items: center;
 `;
 export const Filter = styled.input`
   padding: 10px;

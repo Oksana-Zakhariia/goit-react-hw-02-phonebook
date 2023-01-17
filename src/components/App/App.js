@@ -20,14 +20,17 @@ export class App extends Component {
 
   static propTypes = {};
   addContact = values => {
-    this.state.contacts.map(contact => {
-      if (contact.name === values.name) {
-        return alert(
-          `Contact with name ${contact.name} is already in contacts`
-        );
-      }
-    });
-    return this.setState(prevState => ({
+    const { contacts } = this.state;
+    const { name } = values;
+    if (
+      contacts.find(
+        contact => contact.name.toLowerCase() === values.name.toLowerCase()
+      )
+    ) {
+      alert(`Contact with name ${name.toLowerCase()} is already in contacts`);
+      return;
+    }
+    this.setState(prevState => ({
       contacts: [...prevState.contacts, values],
     }));
   };

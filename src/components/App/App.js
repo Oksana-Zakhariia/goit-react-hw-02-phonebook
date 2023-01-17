@@ -27,13 +27,18 @@ export class App extends Component {
         );
       }
     });
-    this.setState(prevState => ({ contacts: [...prevState.contacts, values] }));
+    return this.setState(prevState => ({
+      contacts: [...prevState.contacts, values],
+    }));
   };
   deleteContact = contactId => {
-    console.log(contactId);
-    this.setState(prevState => ({
-      contacts: prevState.contacts.filter(contact => contactId !== contact.id),
-    }));
+    return this.setState(prevState => {
+      return {
+        contacts: prevState.contacts.filter(
+          contact => contactId !== contact.id
+        ),
+      };
+    });
   };
   searchContact = event => {
     const inputValue = event.currentTarget.value;

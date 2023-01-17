@@ -11,10 +11,9 @@ const initialValues = {
   id: nanoid(5),
   number: '',
 };
-export const ContactForm = () => {
+export const ContactForm = ({ onSubmit }) => {
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
-
+    onSubmit(values);
     resetForm();
   };
   return (
